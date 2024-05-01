@@ -2,7 +2,12 @@
 <div class="row">
   <h1 class="text-center">New Campground</h1>
   <div class="col-6 offset-3">
-    <form action="/campground" method="post">
+    <form
+      action="/campground"
+      method="post"
+      class="needs-validation"
+      novalidate
+    >
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
         <input
@@ -10,7 +15,9 @@
           type="text"
           name="campground[title]"
           id="title"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
@@ -19,7 +26,9 @@
           type="text"
           name="campground[location]"
           id="location"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
       </div>
       <div class="mb-3">
         <label class="form-label mb-3" for="price">Campground Price</label>
@@ -31,8 +40,11 @@
             class="form-control"
             name="campground[price]"
             aria-label="Amount (to the nearest dollar)"
+            required
           />
-          <span class="input-group-text">.00</span>
+
+          <span class="input-group-text">.00/night</span>
+          <div class="valid-feedback">Looks good!</div>
         </div>
       </div>
 
@@ -43,7 +55,9 @@
           type="text"
           name="campground[image]"
           id="image"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
@@ -52,7 +66,9 @@
           type="text"
           name="campground[description]"
           id="description"
+          required
         ></textarea>
+        <div class="valid-feedback">Looks good!</div>
       </div>
       <div class="mt-3">
         <button class="btn btn-success">Add Campground</button>
