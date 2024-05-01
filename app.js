@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const ejsMate = require("ejs-mate");
 const Campground = require("./models/Campground");
 const methodOverride = require("method-override");
 
@@ -21,13 +22,15 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-app.listen(4000, () => {
+app.engine("ejs", ejsMate);
+
+app.listen(3000, () => {
   console.log("listening at 3000");
 });
 
 app.get("/campground", async (req, res) => {
   const campgrounds = await Campground.find({});
-  res.render("campgrounds/index", { campgrounds });
+  res.render("campgrounds/index", { campgrounds: campgrounds });
 });
 
 app.get("/campground/new", (req, res) => {
